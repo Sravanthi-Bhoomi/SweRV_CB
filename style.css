@@ -1,21 +1,27 @@
 /* Global Styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f4f8;
+    background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    background-image: url('https://via.placeholder.com/1920x1080/003366/ffffff?text=RISC-V+Technology');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+    color: #fff;
 }
 
 /* Header Styling */
 header {
-    background-color: #00796b;
-    color: white;
-    padding: 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: bold;
+    color: #ffffff;
 }
 
 header h1 {
@@ -24,37 +30,54 @@ header h1 {
 
 /* Main Content */
 main {
-    margin: 20px;
-    padding: 20px;
+    padding: 30px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight white background for readability */
+    border-radius: 8px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 30px;
 }
 
 h2 {
     color: #00796b;
     font-size: 2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
 p {
     text-align: justify;
-    margin-top: 10px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 1.1rem;
+    margin-top: 10px;
     color: #555;
 }
 
-/* Content Cards */
+/* Card-style Layout */
 .card {
     background: white;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 .card h3 {
     color: #00796b;
     font-size: 1.6rem;
+}
+
+.card p {
+    color: #444;
+    font-size: 1rem;
 }
 
 /* Chatbot Styling */
@@ -63,12 +86,12 @@ p {
     bottom: 20px;
     right: 20px;
     width: 400px;
-    max-width: 100%;
     height: 600px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     display: none;
     transition: transform 0.5s ease-in-out;
     transform: translateY(100%);
+    z-index: 1000;
 }
 
 #chatbot-toggle {
@@ -77,36 +100,34 @@ p {
     right: 20px;
     background-color: #00796b;
     color: white;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 50px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1001;
 }
 
 #chatbot-toggle:hover {
     background-color: #004d40;
+    transform: scale(1.1);
 }
 
 footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
     position: fixed;
     width: 100%;
     bottom: 0;
 }
 
-footer p {
-    margin: 0;
-}
-
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    header {
-        font-size: 1.5rem;
+    header h1 {
+        font-size: 2rem;
     }
 
     .card {
@@ -119,6 +140,7 @@ footer p {
     }
 
     #chatbot-toggle {
-        padding: 10px 20px;
+        padding: 12px 24px;
+        font-size: 1rem;
     }
 }
