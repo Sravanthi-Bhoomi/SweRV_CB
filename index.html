@@ -3,184 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RISC-V SweRV Core Chatbot</title>
-    <style>
-        /* Basic page styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        /* Header styling */
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        /* Main content styling */
-        main {
-            margin: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        p {
-            text-align: justify;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-
-        /* Styling for image container */
-        .image-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        /* Chatbot styling */
-        #chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 400px;
-            max-width: 100%;
-            height: 600px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: none; /* Initially hidden */
-        }
-
-        #chatbot-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Chat assistant intro popup styling */
-        #assistant-popup {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            font-size: 1em;
-            font-weight: bold;
-        }
-    </style>
+    <title>RISC-V Chatbot</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <h1>Welcome to the RISC-V SweRV Core Chatbot</h1>
+        <h1>RISC-V Chatbot Assistant</h1>
+        <p>Your guide to RISC-V, SweRV cores, and everything embedded systems!</p>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <h1>About RISC-V SweRV Core</h1>
-        <div class="image-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/RISC-V_logo.svg/1280px-RISC-V_logo.svg.png" alt="RISC-V SweRV Core">
-        </div>
-        <p>
-            The RISC-V SweRV Core is a high-performance, open-source core developed by Western Digital. Designed specifically for embedded and IoT applications, the SweRV core is based on the RISC-V instruction set architecture (ISA). It offers a 32-bit architecture with dual-issue capability, which makes it highly efficient in processing while maintaining a compact design ideal for various applications.
-        </p>
-        <p>
-            SweRV Core is engineered to support a range of high-speed computations required in modern devices. With open-source licensing, it is available for free use, adaptation, and integration into other projects, allowing the development of innovative solutions across industries.
-        </p>
-        <p>
-            Explore the potential of RISC-V with our chatbot to get answers about the SweRV Core architecture, performance metrics, applications, and development insights.
-        </p>
-    </main>
-
-    <!-- Chatbot Integration -->
+    <!-- Main Content: Chatbot -->
     <div id="chatbot-container">
-        <script type="module">
-            import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
-            Chatbot.init({
-                chatflowid: "", // Replace with your chatflow ID
-                apiHost: "", // Replace with your API host
-            });
-        </script>        
+        <div id="chat-window">
+            <div id="messages"></div>
+        </div>
+        <div id="user-input">
+            <input type="text" id="question" placeholder="Ask your question here..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
-
-    <!-- Toggle button for chatbot -->
-    <div id="chatbot-toggle">Chat with us</div>
-
-    <!-- Chat assistant popup message -->
-    <div id="assistant-popup">Need help? Chat with our assistant!</div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Our Company. All rights reserved.</p>
+        <p>&copy; 2024 RISC-V Chatbot Project. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to toggle chatbot visibility and show assistant popup -->
-    <script>
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotContainer = document.getElementById('chatbot-container');
-        const assistantPopup = document.getElementById('assistant-popup');
-
-        // Toggle chatbot visibility
-        chatbotToggle.addEventListener('click', function() {
-            if (chatbotContainer.style.display === "none") {
-                chatbotContainer.style.display = "block";
-                chatbotToggle.textContent = "Close Chat";
-            } else {
-                chatbotContainer.style.display = "none";
-                chatbotToggle.textContent = "Chat with us";
-            }
-        });
-
-        // Show assistant intro popup briefly
-        function showAssistantPopup() {
-            assistantPopup.style.opacity = '1';
-            assistantPopup.style.transform = 'translateY(0)';
-            setTimeout(() => {
-                assistantPopup.style.opacity = '0';
-                assistantPopup.style.transform = 'translateY(10px)';
-            }, 4000); // Display popup for 4 seconds
-        }
-
-        // Show the assistant popup after the page loads
-        window.addEventListener('load', showAssistantPopup);
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
