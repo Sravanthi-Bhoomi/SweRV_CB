@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Integration</title>
+    <style>
+        /* Basic page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Main content styling */
+        main {
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Chatbot styling */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            max-width: 100%;
+            height: 600px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+        }
+
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>About Our Services</h1>
+        <p>
+            We specialize in providing cutting-edge solutions and support for Lattice Semiconductor FPGA products, including the CertusPro, XP2, and Avant families. Our interactive chatbot, powered by advanced AI, is here to assist you with all your FPGA-related queries. Whether you need detailed specifications, datasheets, or information about the internal architecture of Lattice FPGAs, our chatbot is ready to provide accurate and timely responses. With our expertise and commitment to precision, we ensure that your projects involving Lattice FPGAs are optimized for success. Let us help you navigate the world of programmable logic with ease!
+        </p>
+        <p>
+            Feel free to explore our website and learn more about the projects we are working on. You can also interact with our chatbot for instant help or inquiries.
+        </p>
+    </main>
+
+    <!-- Chatbot Integration -->
+    <div id="chatbot-container">
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "c08ea8a2-755a-4b07-a030-9ac29aeda047",
+        apiHost: "http://192.168.0.177:3000",
+    })
+</script>        
+
+
+    </div>
+
+    <!-- Toggle button for chatbot -->
+    <div id="chatbot-toggle">Chat with us</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Our Company. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to toggle chatbot visibility -->
+    <script>
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+
+        chatbotToggle.addEventListener('click', function() {
+            if (chatbotContainer.style.display === "none") {
+                chatbotContainer.style.display = "block";
+                chatbotToggle.textContent = "Close Chat";
+            } else {
+                chatbotContainer.style.display = "none";
+                chatbotToggle.textContent = "Chat with us";
+            }
+        });
+    </script>
+
+</body>
+</html>
