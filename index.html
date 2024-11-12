@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RISC Chatbot</title>
-
     <!-- Link to External CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Header with Logo -->
     <header>
-        <h1>RISC Chatbot</h1>
+        <h1>RISC-V SweRV Core Chatbot</h1>
     </header>
 
     <!-- Main Content -->
     <main>
         <h2>Welcome to the RISC-V SweRV Core Chatbot</h2>
-        <p>
-            Explore and learn more about the RISC-V SweRV Core. Feel free to ask the chatbot for information related to the SweRV Core architecture and more!
-        </p>
+        <div class="card">
+            <h3>About RISC-V SweRV Core</h3>
+            <p>
+                The RISC-V SweRV Core is a high-performance 64-bit processor core designed for embedded systems. It's part of the open RISC-V architecture and is well-suited for a variety of applications, from IoT devices to high-performance computing.
+            </p>
+        </div>
+        <div class="card">
+            <h3>Features</h3>
+            <ul>
+                <li>High performance</li>
+                <li>Scalable architecture</li>
+                <li>Open-source design</li>
+                <li>Efficient power management</li>
+            </ul>
+        </div>
     </main>
 
-    <!-- Chatbot Integration -->
+    <!-- Chatbot Container -->
     <div id="chatbot-container"></div>
 
     <!-- Toggle button for chatbot -->
@@ -34,7 +45,7 @@
         <p>&copy; 2024 RISC-V Chatbot. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to initialize and toggle chatbot visibility -->
+    <!-- JavaScript to Initialize and Toggle Chatbot Visibility -->
     <script type="module">
         import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
 
@@ -44,16 +55,20 @@
             apiHost: "http://localhost:3000",
         });
 
-        // Toggle chatbot visibility
+        // Toggle chatbot visibility with animation
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotContainer = document.getElementById('chatbot-container');
 
         chatbotToggle.addEventListener('click', function() {
-            if (chatbotContainer.style.display === "none") {
+            if (chatbotContainer.style.display === "none" || chatbotContainer.style.display === "") {
                 chatbotContainer.style.display = "block";
+                chatbotContainer.style.transform = "translateY(0)";
                 chatbotToggle.textContent = "Close Chat";
             } else {
-                chatbotContainer.style.display = "none";
+                chatbotContainer.style.transform = "translateY(100%)";
+                setTimeout(function() {
+                    chatbotContainer.style.display = "none";
+                }, 500);
                 chatbotToggle.textContent = "Chat with us";
             }
         });
