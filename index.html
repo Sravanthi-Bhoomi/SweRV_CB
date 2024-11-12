@@ -3,33 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RISC-V Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+    <title>RISC Chatbot</title>
+
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <h1>RISC-V Chatbot Assistant</h1>
-        <p>Your guide to RISC-V, SweRV cores, and everything embedded systems!</p>
+        <h1>RISC Chatbot</h1>
     </header>
 
-    <!-- Main Content: Chatbot -->
-    <div id="chatbot-container">
-        <div id="chat-window">
-            <div id="messages"></div>
-        </div>
-        <div id="user-input">
-            <input type="text" id="question" placeholder="Ask your question here..." />
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+    <!-- Main Content -->
+    <main>
+        <h2>Welcome to the RISC-V SweRV Core Chatbot</h2>
+        <p>
+            Explore and learn more about the RISC-V SweRV Core. Feel free to ask the chatbot for information related to the SweRV Core architecture and more!
+        </p>
+    </main>
+
+    <!-- Chatbot Integration -->
+    <div id="chatbot-container"></div>
+
+    <!-- Toggle button for chatbot -->
+    <div id="chatbot-toggle">Chat with us</div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 RISC-V Chatbot Project. All rights reserved.</p>
+        <p>&copy; 2024 RISC-V Chatbot. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript to initialize and toggle chatbot visibility -->
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
+
+        // Initialize the chatbot
+        Chatbot.init({
+            chatflowid: "6b61ca6d-0e4d-4dea-8351-6c936b66460e",
+            apiHost: "http://localhost:3000",
+        });
+
+        // Toggle chatbot visibility
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotContainer = document.getElementById('chatbot-container');
+
+        chatbotToggle.addEventListener('click', function() {
+            if (chatbotContainer.style.display === "none") {
+                chatbotContainer.style.display = "block";
+                chatbotToggle.textContent = "Close Chat";
+            } else {
+                chatbotContainer.style.display = "none";
+                chatbotToggle.textContent = "Chat with us";
+            }
+        });
+    </script>
+
 </body>
 </html>
